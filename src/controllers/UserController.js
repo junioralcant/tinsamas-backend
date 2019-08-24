@@ -17,7 +17,7 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { name, email, bio } = req.body;
+    const { name, email, password, bio, whatsapp } = req.body;
     const { filename: avatar } = req.file;
 
     const emailExists = await User.findOne({ email: email });
@@ -29,6 +29,8 @@ module.exports = {
     const user = await User.create({
       name,
       email,
+      password,
+      whatsapp,
       bio,
       avatar
     });
